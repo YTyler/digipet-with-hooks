@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LeftControl() {
+function LeftControl(props) {
   const leftControlStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr',
@@ -8,18 +8,11 @@ function LeftControl() {
     padding: '8px',
   }
 
-  const upButton = () => {
-    console.log('up');
-  }
-
-  const downButton = () => {
-    console.log('down');
-  }
 
   return (
     <div style={leftControlStyle }>
-      <button onClick={upButton}>Up</button>
-      <button onClick={downButton}>Down</button>
+      <button onClick={() => {props.upDown(1)}}>Up</button>
+      <button onClick={() => {props.upDown(-1)}}>Down</button>
     </div>
   );
 }

@@ -1,19 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function Menu() {
+function Menu(props) {
   const menuStyles = {
-    backgroundColor: "rgb(202, 231, 241)",
     textAlign: 'center',
     padding: '20%',
-    margin: '8px'
+    margin: '8px',
   }
 
   return (
     <div style={menuStyles}>
-      <Link to='/game'><h2>GAME</h2></Link>
-      <Link to='/feed'><h2>FEED</h2></Link>
-      <Link to='/play'><h2>PLAY</h2></Link>
+      <h2 onClick={ () => {props.changeView(2)} } >GAME</h2>
+      <h2 onClick={ () => {props.changeView(3)} }>FEED</h2>
+      <h2 onClick={ () => {props.changeView(4)} }>PLAY</h2>
+      <h2 onClick={ () => {props.changeView(0)} }>BACK</h2>
     </div>
   );
 }
