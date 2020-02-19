@@ -8,10 +8,18 @@ function RightControl(props) {
     padding: '8px',
   }
 
+  const aButton = () => {
+    console.log('A');
+  }
+
+  const bButton = () => {
+    console.log('B');
+  }
+
   return (
     <div style={rightControlStyle}>
-      <button>A</button>
-      <button>B</button>
+      <button onClick={aButton}>A</button>
+      <button onClick={bButton}>B</button>
     </div>
   );
 }

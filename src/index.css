@@ -15,7 +15,7 @@ code {
 html {
   margin: 0;
   padding: 0;
-  background-image: url('/background.jpg');
+  /* background-image: url('/background.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100%; */
 }

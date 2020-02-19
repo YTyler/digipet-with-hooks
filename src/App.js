@@ -47,6 +47,7 @@ import {
               <LeftControl />
               <Switch>
                 <Route exact path='/'>
+                  {this.state.currentView = 0}
                   <Pet />
                 </Route>
                 <Route path='/menu'>

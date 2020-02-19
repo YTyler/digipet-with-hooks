@@ -7,10 +7,19 @@ function LeftControl() {
     gridRowGap: '5px',
     padding: '8px',
   }
+
+  const upButton = () => {
+    console.log('up');
+  }
+
+  const downButton = () => {
+    console.log('down');
+  }
+
   return (
     <div style={leftControlStyle }>
-      <button>Up</button>
-      <button>Down</button>
+      <button onClick={upButton}>Up</button>
+      <button onClick={downButton}>Down</button>
     </div>
   );
 }
