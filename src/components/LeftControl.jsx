@@ -11,8 +11,8 @@ function LeftControl(props) {
 
   return (
     <div style={leftControlStyle }>
-      <button onClick={() => {props.upDown(1)}}>Up</button>
-      <button onClick={() => {props.upDown(-1)}}>Down</button>
+      <button onClick={() => {props.upDown(-1)}}>UP</button>
+      <button onClick={() => {props.upDown(1)}}>DOWN</button>
     </div>
   );
 }

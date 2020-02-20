@@ -8,18 +8,12 @@ function RightControl(props) {
     padding: '8px',
   }
 
-  const aButton = () => {
-    console.log('A');
-  }
 
-  const bButton = () => {
-    console.log('B');
-  }
 
   return (
     <div style={rightControlStyle}>
-      <button onClick={aButton}>A</button>
-      <button onClick={bButton}>B</button>
+      <button onClick={() => {props.select()}}>SELECT</button>
+      <button onClick={() => {props.changeView(0)}}>HOME</button>
     </div>
   );
 }

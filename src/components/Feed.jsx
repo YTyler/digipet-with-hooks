@@ -11,7 +11,6 @@ function Feed(props) {
       <h2>A Little</h2>
       <h2>A Lot</h2>
       <h2>A Ton</h2>
-      <h2 onClick={ () => {props.changeView(0)} }>BACK</h2>
     </div>
   );
 }

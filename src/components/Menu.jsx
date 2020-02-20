@@ -12,7 +12,6 @@ function Menu(props) {
       <h2 onClick={ () => {props.changeView(2)} } >GAME</h2>
       <h2 onClick={ () => {props.changeView(3)} }>FEED</h2>
       <h2 onClick={ () => {props.changeView(4)} }>PLAY</h2>
-      <h2 onClick={ () => {props.changeView(0)} }>BACK</h2>
     </div>
   );
 }

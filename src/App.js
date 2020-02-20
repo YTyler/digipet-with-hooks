@@ -24,15 +24,13 @@ class App extends React.Component {
     };
     this.changeView = this.changeView.bind(this);
     this.upDown = this.upDown.bind(this);
+    this.select = this.select.bind(this);
   }
 
   changeView(number) {
-    console.log(number);
     this.setState({ selected: 0 })
     this.setState({ currentView: number })
   }
-
-
 
   componentDidMount() {
     this.gameLoopTimer = setInterval(() => {
@@ -48,8 +46,34 @@ class App extends React.Component {
     clearInterval(this.gameLoopTimer);
   }
 
+  validateEdge(num, top) {
+    return (num < 0) ? 0 : (num > top) ? top : num;
+  }
+
   upDown(mod) {
-    this.setState({selected: (this.state.selected + mod)})
+    let newNum = this.state.selected + mod;
+    if (this.state.currentView === 1 || this.state.currentView === 3) {
+      newNum = this.validateEdge(newNum, 2)
+    }
+    this.setState({selected: (newNum)})
+  }
+
+  select() {
+    if (this.state.currentView === 0) {
+      this.changeView(1);
+    } else if (this.state.currentView === 1) {
+      if (this.state.selected === 0) {
+        this.changeView(2)
+      } else if (this.state.selected === 1) {
+        this.changeView(3)
+      } else if (this.state.selected === 2) {
+        this.changeView(4)
+      }
+    } else if (this.state.currentView === 3) {
+      //Some Feed Function
+      console.log(this.state.selected+1);
+    }
+    return 0
   }
 
   render() {
@@ -93,7 +117,7 @@ class App extends React.Component {
             <div style={screenStyles}>
               {chooseView()}
             </div>
-            <RightControl />
+            <RightControl select={this.select} changeView={this.changeView} />
           </div>
           <Status pet={this.state.pet}/>
       </div>
