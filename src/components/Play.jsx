@@ -2,18 +2,20 @@ import React from 'react';
 
 function Play(props) {
   const playStyle = {
-    textAlign: 'center'
+    textAlign: 'center',
+    maxWidth: '90%',
+    margin: 'auto'
   }
   const imgStyle = {
     maxHeight:'45vh',
     maxWidth: '45vw',
     margin: 'auto',
-    marginTop: '8%',
+    marginTop: '20%',
   }
   return (
     <div style={playStyle}>
-      <img src='/pet_play.png' style={imgStyle}></img>
-      <h2 onClick={ () => {props.changeView(0)} }>BACK</h2>
+      <img src='/pet_play.png' style={imgStyle} alt='pet play'></img>
+      <h2>PLAY</h2>
     </div>
   );
 }

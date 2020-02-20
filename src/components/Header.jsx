@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import But from './But'
 
 function Header() {
+
+  const [changeColor, setChangeColor] = useState(true);
 
   const headerStyle = {
     textAlign: 'center',
     height: '300px',
     overflow: 'hidden',
-    backgroundColor: 'rgba(100,100,100,.93)'
+    backgroundColor: (changeColor) ? 'rgba(100,100,100,.93)' : 'black'
   };
   const imgStyle = {
     marginTop: '50px',
@@ -16,6 +19,7 @@ function Header() {
   return (
     <div style={headerStyle}>
       <img src="/logo.png" alt="Logo" style={imgStyle}/>
+      <But setChangeColor={setChangeColor}/>
     </div>
   );
 }

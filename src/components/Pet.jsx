@@ -2,11 +2,13 @@ import React from 'react';
 
 function Pet(props) {
   const petStyle = {
-    textAlign: 'center'
+    textAlign: 'center',
+    maxWidth: '90%',
+    margin: 'auto'
   }
   const imgStyle = {
-    maxHeight:'45vh',
-    maxWidth: '45vw',
+    maxHeight:'40vh',
+    maxWidth: '40vw',
     margin: 'auto',
     marginTop: '5%'
   }

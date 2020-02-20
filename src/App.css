@@ -1,8 +1,6 @@
 h2 {
-  background-color: #F1D4CA;
+  background-color: #f2d88a;
   border: 1px solid black;
   border-radius: 15px;
-}
-h2:hover {
-  background-color: #F1CAE7;
+  box-shadow: 3px 8px 10px black;
 }

@@ -25,11 +25,12 @@ class App extends React.Component {
     this.changeView = this.changeView.bind(this);
     this.upDown = this.upDown.bind(this);
     this.select = this.select.bind(this);
+    this.feed = this.feed.bind(this);
   }
 
   changeView(number) {
-    this.setState({ selected: 0 })
-    this.setState({ currentView: number })
+    this.setState({ selected: 0 });
+    this.setState({ currentView: number });
   }
 
   componentDidMount() {
@@ -38,7 +39,7 @@ class App extends React.Component {
         hunger: (this.state.pet.hunger-1),
         happiness: (this.state.pet.happiness-1)
       };
-      this.setState({pet: newPet})
+      this.setState({pet: newPet});
     }, 1000);
   }
 
@@ -53,9 +54,26 @@ class App extends React.Component {
   upDown(mod) {
     let newNum = this.state.selected + mod;
     if (this.state.currentView === 1 || this.state.currentView === 3) {
-      newNum = this.validateEdge(newNum, 2)
+      newNum = this.validateEdge(newNum, 2);
     }
-    this.setState({selected: (newNum)})
+    this.setState({selected: (newNum)});
+  }
+
+  feed(selection) {
+    const addedFood = (selection + 1) * 3;
+    const newPetState = {
+      hunger: (this.state.pet.hunger + addedFood),
+      happiness: this.state.pet.happiness
+    };
+    this.setState({pet: newPetState});
+  }
+
+  play() {
+    const newPetState = {
+      hunger: this.state.pet.hunger,
+      happiness: this.state.pet.happiness + 1
+    };
+    this.setState({pet: newPetState});
   }
 
   select() {
@@ -63,17 +81,18 @@ class App extends React.Component {
       this.changeView(1);
     } else if (this.state.currentView === 1) {
       if (this.state.selected === 0) {
-        this.changeView(2)
+        this.changeView(2);
       } else if (this.state.selected === 1) {
-        this.changeView(3)
+        this.changeView(3);
       } else if (this.state.selected === 2) {
-        this.changeView(4)
+        this.changeView(4);
       }
     } else if (this.state.currentView === 3) {
-      //Some Feed Function
-      console.log(this.state.selected+1);
+      this.feed(this.state.selected);
+    } else if (this.state.currentView === 4) {
+      this.play(this.state.selected);
     }
-    return 0
+    return 0;
   }
 
   render() {
@@ -86,25 +105,25 @@ class App extends React.Component {
     };
 
     const screenStyles = {
-      backgroundColor: "rgb(202, 231, 241)",
+      backgroundColor: '#a9cbe8',
     };
 
     const chooseView = () => {
       switch(this.state.currentView) {
-        case 0:
-          return <Pet changeView={this.changeView}/>
-        case 1:
-          return <Menu changeView={this.changeView}/>
-        case 2:
-          return <Game changeView={this.changeView}/>
-        case 3:
-          return <Feed changeView={this.changeView}/>
-        case 4:
-          return <Play changeView={this.changeView}/>
-        default:
-          return "ERROR"
+      case 0:
+        return <Pet changeView={this.changeView}/>;
+      case 1:
+        return <Menu changeView={this.changeView} selected={this.state.selected}/>;
+      case 2:
+        return <Game changeView={this.changeView}/>;
+      case 3:
+        return <Feed changeView={this.changeView} selected={this.state.selected}/>;
+      case 4:
+        return <Play changeView={this.changeView}/>;
+      default:
+        return 'ERROR';
       }
-    }
+    };
 
     return (
       <div className="App">
@@ -112,14 +131,14 @@ class App extends React.Component {
           <Header />
         </header>
 
-          <div className="main" style={mainGridStyles}>
-            <LeftControl upDown={this.upDown}/>
-            <div style={screenStyles}>
-              {chooseView()}
-            </div>
-            <RightControl select={this.select} changeView={this.changeView} />
+        <div className="main" style={mainGridStyles}>
+          <LeftControl upDown={this.upDown}/>
+          <div style={screenStyles}>
+            {chooseView()}
           </div>
-          <Status pet={this.state.pet}/>
+          <RightControl select={this.select} changeView={this.changeView} />
+        </div>
+        <Status pet={this.state.pet}/>
       </div>
     );
   }
