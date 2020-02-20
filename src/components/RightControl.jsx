@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const makeColorPicker = () => {
-  const colors = ['#a9cbe8','red','pink','teal'];
+  const colors = ['white','#a9cbe8'];
   return () => {
     const color = colors.pop();
     colors.unshift(color);
@@ -14,8 +14,8 @@ const alsoGetColor = makeColorPicker();
 
 function RightControl(props) {
 
-  const [btnClr, setBtnClr] = useState('#a9cbe8');
-  const [btnClr2, setBtnClr2] = useState('#a9cbe8');
+  const [btnClr, setBtnClr] = useState('white');
+  const [btnClr2, setBtnClr2] = useState('white');
 
   const rightControlStyle = {
     display: 'grid',
@@ -35,11 +35,14 @@ function RightControl(props) {
   const clicker = () => {
     props.select();
     setBtnClr(getColor());
+    setTimeout(function(){ setBtnClr(getColor()); }, 100);
+
   }
 
   const clicker2 = () => {
     props.changeView(0)
     setBtnClr2(alsoGetColor());
+    setTimeout(function(){ setBtnClr2(alsoGetColor()); }, 100);
   }
 
 
